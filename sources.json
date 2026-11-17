@@ -125,6 +125,21 @@
    "min_entries": 30000,
    "license": "CC BY-SA 4.0 (Wiktionary)",
    "page": "https://github.com/yomidevs/wiktionary-to-yomitan"
+  },
+  {
+   "id": "wty-kor",
+   "kind": "community",
+   "code": "kor-wty",
+   "name": "한국어 (WTY)",
+   "project": "WTY (Wiktionary → Yomitan)",
+   "convert": "wty",
+   "wty": {
+    "source": "ja",
+    "target": "ko"
+   },
+   "min_entries": 3000,
+   "license": "CC BY-SA 4.0 (Wiktionary)",
+   "page": "https://github.com/yomidevs/wiktionary-to-yomitan"
   }
  ],
  "jmdict_repo": "scriptin/jmdict-simplified"

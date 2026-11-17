@@ -8,7 +8,8 @@ matched to a JMdict entry by its written form and its reading. A match that is n
 The rules (`match`), for a WTY entry with a written form W and a reading R (the entries of inflected forms, `non-lemma`, are left out):
   1. R is given: some JMdict entry has the pair (W, R)  -> that entry (when several have it and exactly one is common, the common one; else none).
      R is given but no entry has that pair: W is another word (or the reading of a kanji, not of a word)  -> none.
-  2. R is not given: JMdict has W in exactly one entry -> that entry; in several and exactly one of them is common -> the common one; else none.
+  2. R is not given: JMdict has W in exactly one entry -> that entry; in several and exactly one of them is common -> the common one; else none. (A W written
+     only in kana needs exactly one entry: the common one is not enough.)
 The senses of all the WTY entries that go to one JMdict entry are put together (the ones matched by the pair first), the same text once, at most MAX_SENSES.
 
 usage: python3 -I wty_pack.py --wty wty-ja-ja.zip --jmdict jmdict-eng-X.json.zip --lang jpn --out wty-jpn.zip [--meta '{"...": ...}']
@@ -23,6 +24,9 @@ from collections import Counter, defaultdict
 MAX_SENSES = 4          # the app keeps 4 meanings of an entry
 MAX_TEXT = 160          # one meaning of a Wiktionary entry can be a paragraph
 ZIP_DATE = (2020, 1, 1, 0, 0, 0)  # fixed, so that the same input gives the same bytes (and the release is not uploaded again)
+
+
+KANA_ONLY = re.compile(r"^[\u3040-\u30FF\u30FC\uFF66-\uFF9F]+$")
 
 
 def hira(s):
@@ -71,7 +75,13 @@ class Forms:
                 return None, None   # JMdict knows the form, but not with this reading: another word
             i = self.pick(ids)
             return ("pair", i) if i else (None, None)
-        i = self.pick(self.by_text[term])
+        ids = self.by_text[term]
+        if KANA_ONLY.match(term):
+            # a word written only in kana is the kana form of many entries (ワン: "one" and the sound a dog makes): without a reading to tell them apart, only
+            # an entry that is the only one with this form is certain
+            i = next(iter(ids)) if len(ids) == 1 else None
+        else:
+            i = self.pick(ids)
         return ("text", i) if i else (None, None)
 
 
