@@ -1,15 +1,131 @@
 {
  "tag": "dicts",
  "sources": [
-  {"id": "jmdict-dut", "kind": "official", "code": "dut", "name": "Nederlands", "project": "jmdict-simplified", "repo": "scriptin/jmdict-simplified", "asset": "^jmdict-dut-.*\\.json\\.zip$", "license": "CC BY-SA 4.0 (JMdict, EDRDG)", "ai": false},
-  {"id": "jmdict-fre", "kind": "official", "code": "fre", "name": "Français", "project": "jmdict-simplified", "repo": "scriptin/jmdict-simplified", "asset": "^jmdict-fre-.*\\.json\\.zip$", "license": "CC BY-SA 4.0 (JMdict, EDRDG)", "ai": false},
-  {"id": "jmdict-ger", "kind": "official", "code": "ger", "name": "Deutsch", "project": "jmdict-simplified", "repo": "scriptin/jmdict-simplified", "asset": "^jmdict-ger-.*\\.json\\.zip$", "license": "CC BY-SA 4.0 (JMdict, EDRDG)", "ai": false},
-  {"id": "jmdict-hun", "kind": "official", "code": "hun", "name": "Magyar", "project": "jmdict-simplified", "repo": "scriptin/jmdict-simplified", "asset": "^jmdict-hun-.*\\.json\\.zip$", "license": "CC BY-SA 4.0 (JMdict, EDRDG)", "ai": false},
-  {"id": "jmdict-rus", "kind": "official", "code": "rus", "name": "Русский", "project": "jmdict-simplified", "repo": "scriptin/jmdict-simplified", "asset": "^jmdict-rus-.*\\.json\\.zip$", "license": "CC BY-SA 4.0 (JMdict, EDRDG)", "ai": false},
-  {"id": "jmdict-slv", "kind": "official", "code": "slv", "name": "Slovenščina", "project": "jmdict-simplified", "repo": "scriptin/jmdict-simplified", "asset": "^jmdict-slv-.*\\.json\\.zip$", "license": "CC BY-SA 4.0 (JMdict, EDRDG)", "ai": false},
-  {"id": "jmdict-spa", "kind": "official", "code": "spa", "name": "Español", "project": "jmdict-simplified", "repo": "scriptin/jmdict-simplified", "asset": "^jmdict-spa-.*\\.json\\.zip$", "license": "CC BY-SA 4.0 (JMdict, EDRDG)", "ai": false},
-  {"id": "jmdict-swe", "kind": "official", "code": "swe", "name": "Svenska", "project": "jmdict-simplified", "repo": "scriptin/jmdict-simplified", "asset": "^jmdict-swe-.*\\.json\\.zip$", "license": "CC BY-SA 4.0 (JMdict, EDRDG)", "ai": false},
-  {"id": "jmdict-ko", "kind": "community", "code": "kor", "name": "한국어", "project": "JMdict-ko", "repo": "kongchu2/jmdict-ko", "asset": "^jmdict-ko\\.zip$", "license": "CC BY-SA 4.0", "ai": true},
-  {"id": "jitendex-zh", "kind": "community", "code": "chi", "name": "中文", "project": "Jitendex 日中辞典", "repo": "greyindex/jitendex-yomitan-zh", "asset": "^jitendex-yomitan-zh-full-review-dedup-.*\\.zip$", "license": "CC BY-SA 4.0", "ai": true}
- ]
+  {
+   "id": "jmdict-dut",
+   "kind": "official",
+   "code": "dut",
+   "name": "Nederlands",
+   "project": "jmdict-simplified",
+   "repo": "scriptin/jmdict-simplified",
+   "asset": "^jmdict-dut-.*\\.json\\.zip$",
+   "license": "CC BY-SA 4.0 (JMdict, EDRDG)",
+   "ai": false
+  },
+  {
+   "id": "jmdict-fre",
+   "kind": "official",
+   "code": "fre",
+   "name": "Français",
+   "project": "jmdict-simplified",
+   "repo": "scriptin/jmdict-simplified",
+   "asset": "^jmdict-fre-.*\\.json\\.zip$",
+   "license": "CC BY-SA 4.0 (JMdict, EDRDG)",
+   "ai": false
+  },
+  {
+   "id": "jmdict-ger",
+   "kind": "official",
+   "code": "ger",
+   "name": "Deutsch",
+   "project": "jmdict-simplified",
+   "repo": "scriptin/jmdict-simplified",
+   "asset": "^jmdict-ger-.*\\.json\\.zip$",
+   "license": "CC BY-SA 4.0 (JMdict, EDRDG)",
+   "ai": false
+  },
+  {
+   "id": "jmdict-hun",
+   "kind": "official",
+   "code": "hun",
+   "name": "Magyar",
+   "project": "jmdict-simplified",
+   "repo": "scriptin/jmdict-simplified",
+   "asset": "^jmdict-hun-.*\\.json\\.zip$",
+   "license": "CC BY-SA 4.0 (JMdict, EDRDG)",
+   "ai": false
+  },
+  {
+   "id": "jmdict-rus",
+   "kind": "official",
+   "code": "rus",
+   "name": "Русский",
+   "project": "jmdict-simplified",
+   "repo": "scriptin/jmdict-simplified",
+   "asset": "^jmdict-rus-.*\\.json\\.zip$",
+   "license": "CC BY-SA 4.0 (JMdict, EDRDG)",
+   "ai": false
+  },
+  {
+   "id": "jmdict-slv",
+   "kind": "official",
+   "code": "slv",
+   "name": "Slovenščina",
+   "project": "jmdict-simplified",
+   "repo": "scriptin/jmdict-simplified",
+   "asset": "^jmdict-slv-.*\\.json\\.zip$",
+   "license": "CC BY-SA 4.0 (JMdict, EDRDG)",
+   "ai": false
+  },
+  {
+   "id": "jmdict-spa",
+   "kind": "official",
+   "code": "spa",
+   "name": "Español",
+   "project": "jmdict-simplified",
+   "repo": "scriptin/jmdict-simplified",
+   "asset": "^jmdict-spa-.*\\.json\\.zip$",
+   "license": "CC BY-SA 4.0 (JMdict, EDRDG)",
+   "ai": false
+  },
+  {
+   "id": "jmdict-swe",
+   "kind": "official",
+   "code": "swe",
+   "name": "Svenska",
+   "project": "jmdict-simplified",
+   "repo": "scriptin/jmdict-simplified",
+   "asset": "^jmdict-swe-.*\\.json\\.zip$",
+   "license": "CC BY-SA 4.0 (JMdict, EDRDG)",
+   "ai": false
+  },
+  {
+   "id": "jmdict-ko",
+   "kind": "community",
+   "code": "kor",
+   "name": "한국어",
+   "project": "JMdict-ko",
+   "repo": "kongchu2/jmdict-ko",
+   "asset": "^jmdict-ko\\.zip$",
+   "license": "CC BY-SA 4.0",
+   "ai": true
+  },
+  {
+   "id": "jitendex-zh",
+   "kind": "community",
+   "code": "chi",
+   "name": "中文",
+   "project": "Jitendex 日中辞典",
+   "repo": "greyindex/jitendex-yomitan-zh",
+   "asset": "^jitendex-yomitan-zh-full-review-dedup-.*\\.zip$",
+   "license": "CC BY-SA 4.0",
+   "ai": true
+  },
+  {
+   "id": "wty-jpn",
+   "kind": "community",
+   "code": "jpn",
+   "name": "日本語",
+   "project": "WTY (Wiktionary → Yomitan)",
+   "convert": "wty",
+   "wty": {
+    "source": "ja",
+    "target": "ja"
+   },
+   "min_entries": 30000,
+   "license": "CC BY-SA 4.0 (Wiktionary)",
+   "page": "https://github.com/yomidevs/wiktionary-to-yomitan"
+  }
+ ],
+ "jmdict_repo": "scriptin/jmdict-simplified"
 }
