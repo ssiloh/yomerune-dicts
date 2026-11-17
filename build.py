@@ -130,7 +130,7 @@ def converted(s, prev, dist, changed, jm, work):
     w = s["wty"]
     idx = json.loads(http(HF + "index/wty-%s-%s-index.json" % (w["source"], w["target"])).read().decode("utf-8"))
     revision = str(idx["revision"])
-    inputs = "wty %s + jmdict %s" % (revision, jm.tag)
+    inputs = "wty %s + jmdict %s + rules %d" % (revision, jm.tag, wty_pack.RULES)
     if prev and prev.get("inputs") == inputs:
         print("unchanged", s["id"], inputs)
         return prev

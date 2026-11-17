@@ -21,6 +21,7 @@ import sys
 import zipfile
 from collections import Counter, defaultdict
 
+RULES = 2               # the version of the matching rules: a change of the rules makes the packs again even when WTY and JMdict are the same (build.py)
 MAX_SENSES = 4          # the app keeps 4 meanings of an entry
 MAX_TEXT = 160          # one meaning of a Wiktionary entry can be a paragraph
 ZIP_DATE = (2020, 1, 1, 0, 0, 0)  # fixed, so that the same input gives the same bytes (and the release is not uploaded again)
