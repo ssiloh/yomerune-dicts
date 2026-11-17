@@ -156,6 +156,21 @@
    "version": "wty-2026.10.22",
    "page": "https://github.com/yomidevs/wiktionary-to-yomitan",
    "inputs": "wty 2026.10.22 + jmdict 3.6.2+20261116213322"
+  },
+  {
+   "id": "wty-kor",
+   "kind": "community",
+   "code": "kor-wty",
+   "name": "한국어 (WTY)",
+   "project": "WTY (Wiktionary → Yomitan)",
+   "url": "https://github.com/ssiloh/yomerune-dicts/releases/download/dicts/wty-kor.zip",
+   "sha256": "46279e5507a907ed2c551369d42ea0b6d19f554614c9bece6fcd8359fd87e4c5",
+   "size": 131219,
+   "license": "CC BY-SA 4.0 (Wiktionary)",
+   "ai": false,
+   "version": "wty-2026.10.22",
+   "page": "https://github.com/yomidevs/wiktionary-to-yomitan",
+   "inputs": "wty 2026.10.22 + jmdict 3.6.2+20261116213322"
   }
  ]
 }
