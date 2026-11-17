@@ -149,13 +149,13 @@
    "name": "日本語",
    "project": "WTY (Wiktionary → Yomitan)",
    "url": "https://github.com/ssiloh/yomerune-dicts/releases/download/dicts/wty-jpn.zip",
-   "sha256": "a5740e8a64fd8113836ef68bd383b526656075ee00ef6e96caf5a7202318a894",
-   "size": 3262614,
+   "sha256": "c38dca331f07f118287f9edc2209271fcca9bcede4ab8bebb2023ecf5b376b74",
+   "size": 3221174,
    "license": "CC BY-SA 4.0 (Wiktionary)",
    "ai": false,
    "version": "wty-2026.10.22",
    "page": "https://github.com/yomidevs/wiktionary-to-yomitan",
-   "inputs": "wty 2026.10.22 + jmdict 3.6.2+20261116213322"
+   "inputs": "wty 2026.10.22 + jmdict 3.6.2+20261116213322 + rules 2"
   },
   {
    "id": "wty-kor",
@@ -170,7 +170,7 @@
    "ai": false,
    "version": "wty-2026.10.22",
    "page": "https://github.com/yomidevs/wiktionary-to-yomitan",
-   "inputs": "wty 2026.10.22 + jmdict 3.6.2+20261116213322"
+   "inputs": "wty 2026.10.22 + jmdict 3.6.2+20261116213322 + rules 2"
   }
  ]
 }
