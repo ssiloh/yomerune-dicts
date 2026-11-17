@@ -1,7 +1,7 @@
 # Notice: who made these dictionaries
 
 The release `dicts` of this repository holds **unchanged copies** of dictionary files made by other projects, and one dictionary that is **converted** (see below), for the app **yomerune** (an unofficial personal tool,
-not related to LINE, Discord or X). Nothing is converted or edited here: `build.py` downloads the file of the latest release of each project, checks it is a zip and
+not related to LINE, Discord or X). The unchanged copies are not converted or edited: `build.py` downloads the file of the latest release of each project, checks it is a zip and
 uploads it under a fixed name. The files keep the licenses of their projects, listed below (a copy of each license text is in `licenses/`).
 
 | File in the release | Made by | Source | License |
