@@ -141,6 +141,21 @@
    "ai": true,
    "version": "v2026.08.11-zh.4",
    "page": "https://github.com/greyindex/jitendex-yomitan-zh"
+  },
+  {
+   "id": "wty-jpn",
+   "kind": "community",
+   "code": "jpn",
+   "name": "日本語",
+   "project": "WTY (Wiktionary → Yomitan)",
+   "url": "https://github.com/ssiloh/yomerune-dicts/releases/download/dicts/wty-jpn.zip",
+   "sha256": "a5740e8a64fd8113836ef68bd383b526656075ee00ef6e96caf5a7202318a894",
+   "size": 3262614,
+   "license": "CC BY-SA 4.0 (Wiktionary)",
+   "ai": false,
+   "version": "wty-2026.10.22",
+   "page": "https://github.com/yomidevs/wiktionary-to-yomitan",
+   "inputs": "wty 2026.10.22 + jmdict 3.6.2+20261116213322"
   }
  ]
 }
