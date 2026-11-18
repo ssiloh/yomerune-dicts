@@ -32,6 +32,8 @@ import wty_pack  # noqa: E402
 REPO = os.environ.get("GITHUB_REPOSITORY", "ssiloh/yomerune-dicts")
 MAX_BYTES = 150 * 1024 * 1024  # the biggest file the app takes (DictCatalog.MAX_BYTES)
 UPLOAD = "--no-upload" not in sys.argv
+CONFIG = json.loads((HERE / "sources.json").read_text(encoding="utf-8"))
+TAG = CONFIG["tag"]  # the rolling release the files are uploaded to
 UA = "yomerune-dicts-builder"
 HF = "https://huggingface.co/datasets/daxida/wty-release/resolve/main/latest/"
 
@@ -76,6 +78,15 @@ def sha_of(path):
     return h.hexdigest()
 
 
+def entry(s, sha, size, version, page, **extra):
+    """The entry of the catalog for a file of this repository's release (the keys in the order the file has always had)."""
+    return {
+        "id": s["id"], "kind": s["kind"], "code": s["code"], "name": s["name"], "project": s["project"],
+        "url": "https://github.com/%s/releases/download/%s/%s.zip" % (REPO, TAG, s["id"]), "sha256": sha, "size": size,
+        "license": s["license"], "ai": s.get("ai", False), "version": version, "page": page, **extra,
+    }
+
+
 def mirrored(s, prev, dist, changed):
     rel = gh_json("repos/%s/releases/latest" % s["repo"])
     pat = re.compile(s["asset"])
@@ -92,7 +103,9 @@ def mirrored(s, prev, dist, changed):
     sha, n = download(a["browser_download_url"], out)
     if digest and digest != sha:
         raise SystemExit("%s: the download does not match the SHA-256 GitHub gives" % s["id"])
-    if out.read_bytes()[:2] != b"PK":
+    with open(out, "rb") as f:
+        magic = f.read(2)
+    if magic != b"PK":
         raise SystemExit("%s: not a zip file" % s["id"])
     if prev and prev["sha256"] == sha:
         out.unlink()
@@ -100,11 +113,7 @@ def mirrored(s, prev, dist, changed):
         return prev
     changed.append(out)
     print("mirrored", s["id"], n, sha[:12], rel["tag_name"])
-    return {
-        "id": s["id"], "kind": s["kind"], "code": s["code"], "name": s["name"], "project": s["project"],
-        "url": "https://github.com/%s/releases/download/%s/%s.zip" % (REPO, TAG, s["id"]), "sha256": sha, "size": n,
-        "license": s["license"], "ai": s["ai"], "version": rel["tag_name"], "page": "https://github.com/" + s["repo"],
-    }
+    return entry(s, sha, n, rel["tag_name"], "https://github.com/" + s["repo"])
 
 
 class Jmdict:
@@ -138,7 +147,7 @@ def converted(s, prev, dist, changed, jm, work):
     download(HF + "dict/%s/%s/wty-%s-%s.zip" % (w["source"], w["target"], w["source"], w["target"]), wty_zip)
     meta = {"unofficial": True, "ai": False, "source": "Wiktionary (WTY, kaikki.org)", "license": "CC BY-SA 4.0", "url": "https://github.com/yomidevs/wiktionary-to-yomitan"}
     forms = jm.load(work)
-    pack, stats, _ = wty_pack.convert(wty_zip, None, s["code"], meta, forms=forms, forms_version=jm.version)
+    pack, stats = wty_pack.convert(wty_zip, None, s["code"], meta, forms=forms, forms_version=jm.version)
     wty_zip.unlink()
     if len(pack["words"]) < s.get("min_entries", 1000):
         raise SystemExit("%s: only %d entries: something is wrong with the input" % (s["id"], len(pack["words"])))
@@ -147,11 +156,6 @@ def converted(s, prev, dist, changed, jm, work):
     sha, n = sha_of(out), out.stat().st_size
     for k, v in sorted(stats.items()):
         print("  %-34s %8d" % (k, v))
-    entry = {
-        "id": s["id"], "kind": s["kind"], "code": s["code"], "name": s["name"], "project": s["project"],
-        "url": "https://github.com/%s/releases/download/%s/%s.zip" % (REPO, TAG, s["id"]), "sha256": sha, "size": n,
-        "license": s["license"], "ai": False, "version": "wty-" + revision, "page": s["page"], "inputs": inputs,
-    }
     if prev and prev["sha256"] == sha:
         out.unlink()
         print("unchanged (made again)", s["id"])
@@ -160,13 +164,11 @@ def converted(s, prev, dist, changed, jm, work):
         return prev
     changed.append(out)
     print("made", s["id"], n, sha[:12], inputs)
-    return entry
+    return entry(s, sha, n, "wty-" + revision, s["page"], inputs=inputs)
 
 
 def main():
-    global TAG
-    cfg = json.loads((HERE / "sources.json").read_text(encoding="utf-8"))
-    TAG = cfg["tag"]
+    cfg = CONFIG
     prev = {}
     cat_file = HERE / "catalog.json"
     if cat_file.exists():
@@ -203,4 +205,5 @@ def main():
         print("uploaded", len(changed), "files")
 
 
-main()
+if __name__ == "__main__":
+    main()

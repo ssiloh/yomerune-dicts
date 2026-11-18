@@ -203,7 +203,7 @@ def convert(wty_path, jmdict_path, lang, meta=None, forms=None, forms_version=""
         "words": words,
     }
     stats["entries of the pack"] = len(words)
-    return pack, stats, index
+    return pack, stats
 
 
 def write_zip(pack, out_path, inner_name):
@@ -224,7 +224,7 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--meta", default="{}")
     a = ap.parse_args()
-    pack, stats, _ = convert(a.wty, a.jmdict, a.lang, json.loads(a.meta))
+    pack, stats = convert(a.wty, a.jmdict, a.lang, json.loads(a.meta))
     n = write_zip(pack, a.out, "wty-%s.json" % a.lang)
     for k, v in sorted(stats.items()):
         print("%-34s %8d" % (k, v))
