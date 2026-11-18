@@ -29,7 +29,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))  # `python3 -I` does not put the folder of the script on the path; wty_pack.py is in this repository
 
 import wty_pack  # noqa: E402
-REPO = os.environ.get("GITHUB_REPOSITORY", "ssiloh/yomerune-dicts")
+REPO = os.environ.get("GITHUB_REPOSITORY", "zustuser/yomerune-dicts")
 MAX_BYTES = 150 * 1024 * 1024  # the biggest file the app takes (DictCatalog.MAX_BYTES)
 UPLOAD = "--no-upload" not in sys.argv
 CONFIG = json.loads((HERE / "sources.json").read_text(encoding="utf-8"))
